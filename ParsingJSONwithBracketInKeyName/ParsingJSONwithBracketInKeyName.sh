@@ -30,6 +30,8 @@
 # yum install jq -y
 #-----------------------------------------------------------------
 
+echo "**************** NEW RUN ****************" >> ParsingJSONwithBracketInKeyName.log
+
 
 #rootPath=deploymentDetails.resources
 #object=Cloud_Machine_1
