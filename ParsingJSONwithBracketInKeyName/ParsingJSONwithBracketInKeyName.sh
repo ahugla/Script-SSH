@@ -17,6 +17,7 @@
 #      UTILISATION
 # ./script.sh payload rootPath object indice field
 #    avec : 
+#      payload={JSON}
 #      rootPath=deploymentDetails.resources
 #      object=Cloud_Machine_1
 #      position=0      =>  on prend Cloud_Machine_1[0]
@@ -30,6 +31,7 @@
 # yum install jq -y
 #-----------------------------------------------------------------
 
+cd /root/CAS_agent_scripts/getVMIPfromJSON
 echo "**************** NEW RUN ****************" >> ParsingJSONwithBracketInKeyName.log
 
 
