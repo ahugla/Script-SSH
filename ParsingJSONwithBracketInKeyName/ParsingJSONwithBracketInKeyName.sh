@@ -15,7 +15,7 @@
 
 #-----------------------------------------------------------------
 #      UTILISATION
-# ./script.sh rootPath object indice field
+# ./script.sh payload rootPath object indice field
 #    avec : 
 #      rootPath=deploymentDetails.resources
 #      object=Cloud_Machine_1
@@ -37,10 +37,12 @@ echo "**************** NEW RUN ****************" >> ParsingJSONwithBracketInKeyN
 #object=Cloud_Machine_1
 #position=0
 #field=address
-rootPath=$1
-object=$2
-indice=$3
-field=$4
+payload=$1
+rootPath=$2
+object=$3
+indice=$4
+field=$5
+echo "payload = $payload" >> ParsingJSONwithBracketInKeyName.log
 echo "rootPath = $rootPath" >> ParsingJSONwithBracketInKeyName.log
 echo "object = $object" >> ParsingJSONwithBracketInKeyName.log
 echo "indice = $indice" >> ParsingJSONwithBracketInKeyName.log
@@ -50,7 +52,7 @@ echo "field = $field" >> ParsingJSONwithBracketInKeyName.log
 # more file.json | jq .deploymentDetails.resources.\"Cloud_Machine_1[0]\".address
 # more file.json | jq ."$rootPath".\"Cloud_Machine_1[0]\"."$field"
 # more file.json | jq ."$rootPath".\""$object"[0]\"."$field"
-output=`more file.json | jq ."$rootPath".\""$object"["$indice"]\"."$field"`
+output=`echo $payload | jq ."$rootPath".\""$object"["$indice"]\"."$field"`
 # echo "output = $output"
 
 # clean output
