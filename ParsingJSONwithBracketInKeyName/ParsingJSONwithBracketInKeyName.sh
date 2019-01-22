@@ -31,7 +31,7 @@
 # yum install jq -y
 #-----------------------------------------------------------------
 
-cd /root/CAS_agent_scripts/getVMIPfromJSON
+cd /root/CAS_agent_scripts/ParsingJSONwithBracketInKeyName
 echo "**************** NEW RUN ****************" >> ParsingJSONwithBracketInKeyName.log
 
 
@@ -39,7 +39,7 @@ echo "**************** NEW RUN ****************" >> ParsingJSONwithBracketInKeyN
 #object=Cloud_Machine_1
 #position=0
 #field=address
-payload=$1
+payload="$1"
 rootPath=$2
 object=$3
 indice=$4
