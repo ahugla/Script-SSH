@@ -61,3 +61,7 @@ output=`echo $payload | jq ."$rootPath".\""$object"["$indice"]\"."$field"`
 retour=`echo $output | sed -e 's/\"//g'`
 echo "retour = $retour" >> ParsingJSONwithBracketInKeyName.log
 
+#return
+echo $retour
+
+
