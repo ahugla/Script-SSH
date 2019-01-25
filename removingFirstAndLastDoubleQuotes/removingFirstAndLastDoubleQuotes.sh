@@ -18,16 +18,17 @@
 
 
 echo "**************** NEW RUN ****************" >> removingFirstAndLastDoubleQuotes.log
-echo "chaine d'input : $1"
+echo "chaine d'input : $1" >> removingFirstAndLastDoubleQuotes.log
 
 longueur=`echo $1 | wc -m`
 #echo "longueur = $longueur"
 end=$(( $longueur - 2 ))
 
 #on recupere l'input sans les doubles quotes au debut et a la fin
-cleanInput1=`echo $1 | cut -c 2-$end`
-echo "chaine sans double quotes = $cleanInput1"  >>  removingFirstAndLastDoubleQuotes.log
+cleanInput=`echo $1 | cut -c 2-$end`
+echo "chaine sans double quotes = $cleanInput"  >>  removingFirstAndLastDoubleQuotes.log
 
+echo $cleanInput
 
 
 
