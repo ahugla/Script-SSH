@@ -16,6 +16,7 @@
 # ./script.sh STRING
 #-----------------------------------------------------------------
 
+cd /root/CAS_agent_scripts/removingFirstAndLastDoubleQuotes
 
 echo "**************** NEW RUN ****************" >> removingFirstAndLastDoubleQuotes.log
 echo "chaine d'input : $1" >> removingFirstAndLastDoubleQuotes.log
