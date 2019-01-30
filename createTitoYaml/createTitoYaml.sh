@@ -53,9 +53,9 @@ mv $titoYamlFile github_K8S_yaml/TITO/NodePort/CodeStreamDemo/CodeStreamDemo.yam
 
 # git sync
 cd ./github_K8S_yaml
-git add -A
-git commit -m "Code Stream Demo"
-git push  https://github.com/ahugla/K8S_yaml.git
+git add -A  > /dev/null 2>&1
+git commit -m "Code Stream Demo" > /dev/null 2>&1
+git push  https://github.com/ahugla/K8S_yaml.git > /dev/null 2>&1
 
 
 #echo "Completed !" >> $logFile
