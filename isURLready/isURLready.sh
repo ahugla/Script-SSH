@@ -2,7 +2,7 @@
 
 #-----------------------------------------------------------------
 #      VERSIONING
-# v1.0 - 22 janvier 2019
+# v1.1 - 30 janvier 2019
 #-----------------------------------------------------------------
 
 #-----------------------------------------------------------------
@@ -21,20 +21,20 @@ Port=$2        # Port
 maxRetry=$3    # nombre de fois qu'on attend 2 secondes avant de recommencer le test
 URL="http://$Server:$Port"
 
-echo "**************** NEW RUN ****************" >> isURLready.log
-echo "nbre de retry (toutes les 2s): $maxRetry" >> isURLready.log
-echo "URL = $URL" >> isURLready.log
+logFile="isURLready.log"
+
+echo "**************** NEW RUN ****************" >> $logFile
+echo "nbre de retry (toutes les 2s): $maxRetry" >> $logFile
+echo "URL = $URL" >> $logFile
 
 
 continu=1
 counter=1
 while [ $continu -eq 1 ]
 do
-    echo "counter = $counter" >> isURLready.log
-
     #isWorking=1 si OK,
-    isWorking=`curl -I $URL  | grep HTTP | grep OK | grep 200 | wc -l` 
-    echo "isWorking = $isWorking" >> isURLready.log 
+    isWorking=`curl --silent -I $URL  | grep HTTP | grep OK | grep 200 | wc -l` 
+    echo "counter = $counter   -   isWorking = $isWorking" >> $logFile 
 
     if [ $isWorking -eq 1 ] || [ $counter -eq $maxRetry ]
     then
