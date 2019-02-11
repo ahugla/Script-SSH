@@ -33,6 +33,7 @@
 
 cd /root/CAS_agent_scripts/ParsingJSONwithBracketInKeyName
 echo "**************** NEW RUN ****************" >> ParsingJSONwithBracketInKeyName.log
+date +"%d-%b-%y  -  %T" >> ParsingJSONwithBracketInKeyName.log
 
 
 #rootPath=deploymentDetails.resources

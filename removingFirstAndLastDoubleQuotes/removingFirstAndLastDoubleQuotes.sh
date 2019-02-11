@@ -19,6 +19,7 @@
 cd /root/CAS_agent_scripts/removingFirstAndLastDoubleQuotes
 
 echo "**************** NEW RUN ****************" >> removingFirstAndLastDoubleQuotes.log
+date +"%d-%b-%y  -  %T" >> removingFirstAndLastDoubleQuotes.log
 echo "chaine d'input : $1" >> removingFirstAndLastDoubleQuotes.log
 
 longueur=`echo $1 | wc -m`

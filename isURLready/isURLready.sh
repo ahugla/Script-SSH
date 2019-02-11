@@ -24,6 +24,7 @@ URL="http://$Server:$Port"
 logFile="isURLready.log"
 
 echo "**************** NEW RUN ****************" >> $logFile
+date +"%d-%b-%y  -  %T" >> $logFile
 echo "nbre de retry (toutes les 2s): $maxRetry" >> $logFile
 echo "URL = $URL" >> $logFile
 
