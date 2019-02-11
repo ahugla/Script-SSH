@@ -25,6 +25,7 @@ Proxy_Port=$4
 logFile=createTitoYaml.log
 
 echo "**************** NEW RUN ****************" >> $logFile
+date +"%d-%b-%y  -  %T" >> $logFile
 echo "yamlVersion = $yamlVersion" >> $logFile
 echo "nodePort = $nodePort" >> $logFile
 echo "Proxy_Name = $Proxy_Name" >> $logFile
@@ -53,6 +54,7 @@ mv $titoYamlFile github_K8S_yaml/TITO/NodePort/CodeStreamDemo/CodeStreamDemo.yam
 
 # git sync
 cd ./github_K8S_yaml
+git pull https://github.com/ahugla/K8S_yaml.git master > /dev/null 2>&1
 git add -A  > /dev/null 2>&1
 git commit -m "Code Stream Demo" > /dev/null 2>&1
 git push  https://github.com/ahugla/K8S_yaml.git > /dev/null 2>&1
