@@ -2,13 +2,13 @@
 
 #-----------------------------------------------------------------
 #      VERSIONING
-# v1.0 - 30 janvier 2019
+# v1.1 - 21 fevrier 2019
 #-----------------------------------------------------------------
 
 #-----------------------------------------------------------------
 #      DESCRIPTION
-# Creartion d'un fichier YAML pour tito (RC, Service et pods)
-# Puis depo sur Gihub : K8S_yaml/TITO/NodePort/CodeStreamDemo/CodeStreamDemo.yaml
+# Creation d'un fichier YAML pour tito (RC, Service et pods)
+# Puis depo sur Gihub dans: .../Demo-Tito/CodeStreamDemo.yaml
 #-----------------------------------------------------------------
 
 #-----------------------------------------------------------------
@@ -32,32 +32,31 @@ echo "Proxy_Name = $Proxy_Name" >> $logFile
 echo "Proxy_Port = $Proxy_Port" >> $logFile
 
 
-cd /root/CAS_agent_scripts/createTitoYaml
+cd /root/Demo-Tito
 
 
 # download le template yaml de tito
 rm -f $titoYamlFile
-curl --silent -O https://raw.githubusercontent.com/ahugla/K8S_yaml/master/TITO/NodePort/$titoYamlFile
+curl --silent -O https://raw.githubusercontent.com/ahugla/Demo-Tito/master/$titoYamlFile
 
 
-# modification du fichier
+# modification du fichier template
 sed -i -e 's/value: V1.9.2/value: '"$yamlVersion"'/g' $titoYamlFile
 sed -i -e 's/31200/'"$nodePort"'/g' $titoYamlFile
 sed -i -e 's/wvfp1.cpod-vr.shwrfr.mooo.com/'"$Proxy_Name"'/g' $titoYamlFile
 sed -i -e 's/2878/'"$Proxy_Port"'/g' $titoYamlFile
 
 
-# on deplace le fichier yaml au bon endroit sur le depot
-rm -f github_K8S_yaml/TITO/NodePort/CodeStreamDemo/CodeStreamDemo.yaml
-mv $titoYamlFile github_K8S_yaml/TITO/NodePort/CodeStreamDemo/CodeStreamDemo.yaml
+# Rename du fichier template
+rm -f CodeStreamDemo.yaml
+mv $titoYamlFile CodeStreamDemo.yaml
 
 
 # git sync
-cd ./github_K8S_yaml
-git pull https://github.com/ahugla/K8S_yaml.git master > /dev/null 2>&1
+git pull https://github.com/ahugla/Demo-Tito.git master > /dev/null 2>&1
 git add -A  > /dev/null 2>&1
 git commit -m "Code Stream Demo" > /dev/null 2>&1
-git push  https://github.com/ahugla/K8S_yaml.git > /dev/null 2>&1
+git push  https://github.com/ahugla/Demo-Tito.git > /dev/null 2>&1
 
 
 #echo "Completed !" >> $logFile
