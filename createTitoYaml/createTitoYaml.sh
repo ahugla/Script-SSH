@@ -23,7 +23,7 @@ yamlVersion=$1
 nodePort=$2
 Proxy_Name=$3
 Proxy_Port=$4
-logFile=createTitoYaml.log
+logFile=/root/CAS_agent_scripts/createTitoYaml/createTitoYaml.log
 
 
 echo "**************** NEW RUN ****************" >> $logFile
