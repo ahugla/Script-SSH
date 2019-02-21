@@ -2,7 +2,7 @@
 
 #-----------------------------------------------------------------
 #      VERSIONING
-# v1.1 - 21 fevrier 2019
+# v1.2 - 21 fevrier 2019
 #-----------------------------------------------------------------
 
 #-----------------------------------------------------------------
@@ -17,12 +17,14 @@
 #-----------------------------------------------------------------
 
 
-titoYamlFile=tito_svc_rc_Template.yaml
+titoTemplateYamlFile=tito_svc_rc_Template.yaml
+titoNewYamlFile=CodeStreamDemo.yaml
 yamlVersion=$1
 nodePort=$2
 Proxy_Name=$3
 Proxy_Port=$4
 logFile=createTitoYaml.log
+
 
 echo "**************** NEW RUN ****************" >> $logFile
 date +"%d-%b-%y  -  %T" >> $logFile
@@ -35,21 +37,18 @@ echo "Proxy_Port = $Proxy_Port" >> $logFile
 cd /root/Demo-Tito
 
 
-# download le template yaml de tito
-rm -f $titoYamlFile
-curl --silent -O https://raw.githubusercontent.com/ahugla/Demo-Tito/master/$titoYamlFile
+# download et copy du template yaml de tito
+rm -f $titoTemplateYamlFile
+rm -f $titoNewYamlFile
+curl --silent -O https://raw.githubusercontent.com/ahugla/Demo-Tito/master/$titoTemplateYamlFile
+cp $titoTemplateYamlFile $titoNewYamlFile
 
 
 # modification du fichier template
-sed -i -e 's/value: V1.9.2/value: '"$yamlVersion"'/g' $titoYamlFile
-sed -i -e 's/31200/'"$nodePort"'/g' $titoYamlFile
-sed -i -e 's/wvfp1.cpod-vr.shwrfr.mooo.com/'"$Proxy_Name"'/g' $titoYamlFile
-sed -i -e 's/2878/'"$Proxy_Port"'/g' $titoYamlFile
-
-
-# Rename du fichier template
-rm -f CodeStreamDemo.yaml
-mv $titoYamlFile CodeStreamDemo.yaml
+sed -i -e 's/value: V1.9.2/value: '"$yamlVersion"'/g' $titoNewYamlFile
+sed -i -e 's/31200/'"$nodePort"'/g' $titoNewYamlFile
+sed -i -e 's/wvfp1.cpod-vr.shwrfr.mooo.com/'"$Proxy_Name"'/g' $titoNewYamlFile
+sed -i -e 's/2878/'"$Proxy_Port"'/g' $titoNewYamlFile
 
 
 # git sync
