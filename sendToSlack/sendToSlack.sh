@@ -17,8 +17,12 @@
 
 
 Message=$1
-CONTENT_FILE="./content_file"
+CONTENT_FILE="content_file"
 logFile="sendToSlack.log"
+
+
+cd /root/CAS_agent_scripts/sendToSlack
+
 
 echo "**************** NEW RUN ****************" >> $logFile
 date +"%d-%b-%y  -  %T" >> $logFile
